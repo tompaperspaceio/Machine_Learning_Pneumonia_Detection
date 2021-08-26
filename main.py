@@ -5,12 +5,12 @@ import torchvision
 from torchvision import datasets, models, transforms
 import copy
 import time
-# import matplotlib.pyplot as plt
+import matplotlib.pyplot as plt
 import numpy as np
 import os
 
 EPOCHS = 10
-data_directory = "chest_xray/chest_xray"
+data_directory = "chest_xray\chest_xray"
 TEST = 'test'
 TRAIN = 'train'
 VAL = 'val'
@@ -69,10 +69,10 @@ def xrayVisualization(inp, title=None):
     std = np.array([0.229, 0.224, 0.225])
     inp = std * inp + mean
     inp = np.clip(inp, 0, 1)
-#     plt.imshow(inp)
-#     if title is not None:
-#         plt.title(title)
-#     plt.show()
+    plt.imshow(inp)
+    if title is not None:
+        plt.title(title)
+    plt.show()
 
 
 inputs, classes = next(iter(dataloaders[TRAIN]))
