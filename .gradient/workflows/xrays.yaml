@@ -4,7 +4,7 @@ on:
       only: main
 
 jobs:
-  CloneRepo2:
+  CloneRepo:
     resources:
       instance-type: C3
     outputs:
@@ -18,9 +18,9 @@ jobs:
     resources:
       instance-type: P5000
     needs:
-      - CloneRepo2
+      - CloneRepo
     inputs:
-      xray: CloneRepo2.outputs.xray
+      xray: CloneRepo.outputs.xray
     outputs:
       xrayoutputs:
         type: dataset
