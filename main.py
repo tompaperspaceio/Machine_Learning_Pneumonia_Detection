@@ -43,6 +43,7 @@ def data_transforms(phase):
 
     return transform
 
+print("Is this thing even working?")
 
 device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
 if torch.cuda.is_available():
