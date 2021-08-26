@@ -10,7 +10,7 @@ import numpy as np
 import os
 
 EPOCHS = 10
-data_directory = "chest_xray\chest_xray"
+data_directory = "chest_xray\\chest_xray"
 TEST = 'test'
 TRAIN = 'train'
 VAL = 'val'
