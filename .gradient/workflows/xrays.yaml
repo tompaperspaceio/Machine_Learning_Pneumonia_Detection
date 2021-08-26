@@ -2,6 +2,7 @@ on:
   github:
     branches:
       only: master
+      
 jobs:
   CloneRepo:
     resources:
