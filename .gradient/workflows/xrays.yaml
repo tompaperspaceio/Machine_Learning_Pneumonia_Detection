@@ -14,6 +14,8 @@ jobs:
       url: context.event.github.url
       ref: context.event.github.ref
   Xray:
+    env:
+      PYTHONUNBUFFERED: 1
     resources:
       instance-type: P6000
     needs:
