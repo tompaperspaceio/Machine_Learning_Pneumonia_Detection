@@ -33,7 +33,8 @@ jobs:
         cd /inputs/xray
         pip install matplotlib
         python main.py 
-      image: pytorch/pytorch:latest
+      image: pytorch/pytorch:1.9.0-cuda11.1-cudnn8-runtime
 # nvcr.io/nvidia/pytorch:21.07-py3
+# pytorch/pytorch:1.9.0-cuda11.1-cudnn8-runtime
 # pytorch/pytorch:1.9.0-cuda10.2-cudnn7-runtime
 # pytorch/pytorch:latest
