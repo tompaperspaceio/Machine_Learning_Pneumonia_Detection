@@ -32,7 +32,6 @@ jobs:
       script: |-
         cd /inputs/xray
         pip install matplotlib
-        sleep infinity
         python main.py 
       image: pytorch/pytorch:latest
 # nvcr.io/nvidia/pytorch:21.07-py3
