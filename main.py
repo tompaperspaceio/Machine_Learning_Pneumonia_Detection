@@ -1,13 +1,22 @@
+print("import torch")
 import torch
+print("import torch.nn")
 import torch.nn as nn
+print("import torch.optim")
 import torch.optim as optim
+print("import torch")
 import torchvision
+print("import torchvision")
 from torchvision import datasets, models, transforms
 import copy
 import time
+print("import matplotlib")
 import matplotlib.pyplot as plt
+print("import numpy")
 import numpy as np
 import os
+
+print("init globals")
 
 EPOCHS = 10
 data_directory = "chest_xray/chest_xray"
@@ -43,17 +52,19 @@ def data_transforms(phase):
 
     return transform
 
-print("Is this thing even working?")
-
-device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
+print("torch.cuda.is_available()")
 if torch.cuda.is_available():
     print("Cuda supported device detected, using GPU\n")
 else:
     print("Using CPU, see you in 20 years!\n")
+print("torch.device")
+device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
 
+print("set xray_datasets")
 xray_datasets = {x: datasets.ImageFolder(os.path.join(data_directory, x), data_transforms(x)) for x in
                  [TRAIN, VAL, TEST]}
 
+print("set dataloaders")
 dataloaders = {TRAIN: torch.utils.data.DataLoader(xray_datasets[TRAIN], batch_size=16, shuffle=True),
                VAL: torch.utils.data.DataLoader(xray_datasets[VAL], batch_size=1, shuffle=True),
                TEST: torch.utils.data.DataLoader(xray_datasets[TEST], batch_size=1, shuffle=True)}
@@ -74,11 +85,14 @@ def xrayVisualization(inp, title=None):
         plt.title(title)
     plt.show()
 
-
+print("set iterators")
 inputs, classes = next(iter(dataloaders[TRAIN]))
+print("torchvision.utils.make_grid")
 out = torchvision.utils.make_grid(inputs)
+print("xrayVisualization")
 xrayVisualization(out, title=[class_names[x] for x in classes])
 
+print("reset iterators")
 inputs, classes = next(iter(dataloaders[TRAIN]))
 
 
@@ -151,11 +165,16 @@ def test_model():
     return true_labels, prediction_labels, testing_correct, testing_total, acc
 
 
+print("models.resnet152()")
 model = models.resnet152()
 
+print("model.to(device)")
 model = model.to(device)
+print("nn.CrossEntropyLoss()")
 loss_function = nn.CrossEntropyLoss()
+print("optim.SG")
 optimizer = optim.SGD(model.parameters(), lr=0.001, momentum=0.9, weight_decay=0.01)
+print("optim.lr_scheduler.StepLR")
 exp_lr_scheduler = optim.lr_scheduler.StepLR(optimizer, step_size=10, gamma=0.1)
 
 training_start_time = time.time()
