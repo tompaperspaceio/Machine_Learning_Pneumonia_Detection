@@ -17,7 +17,7 @@ jobs:
     env:
       PYTHONUNBUFFERED: "1"
     resources:
-      instance-type: P4000
+      instance-type: C7
     needs:
       - CloneRepo
     inputs:
